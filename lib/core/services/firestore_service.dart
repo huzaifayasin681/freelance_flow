@@ -22,7 +22,7 @@ class FirestoreService {
       if (_currentUserId == null) throw Exception('User not authenticated');
 
       final docRef = await _firestore.collection('clients').add(
-        client.copyWith(userId: _currentUserId!).toMap(),
+        client.copyWith().toMap()..['userId'] = _currentUserId,
       );
 
       return docRef.id;
@@ -97,7 +97,7 @@ class FirestoreService {
       if (_currentUserId == null) throw Exception('User not authenticated');
 
       final docRef = await _firestore.collection('projects').add(
-        project.copyWith(userId: _currentUserId!).toMap(),
+        project.copyWith().toMap()..['userId'] = _currentUserId,
       );
 
       return docRef.id;
@@ -198,7 +198,7 @@ class FirestoreService {
       if (_currentUserId == null) throw Exception('User not authenticated');
 
       final docRef = await _firestore.collection('tasks').add(
-        task.copyWith(userId: _currentUserId!).toMap(),
+        task.copyWith().toMap()..['userId'] = _currentUserId,
       );
 
       return docRef.id;
@@ -308,7 +308,7 @@ class FirestoreService {
       if (_currentUserId == null) throw Exception('User not authenticated');
 
       final docRef = await _firestore.collection('payments').add(
-        payment.copyWith(userId: _currentUserId!).toMap(),
+        payment.copyWith().toMap()..['userId'] = _currentUserId,
       );
 
       return docRef.id;
@@ -529,11 +529,16 @@ class FirestoreService {
           .count()
           .get();
 
+      final clientsCountSnapshot = futures[0] as AggregateQuerySnapshot;
+      final projectsCountSnapshot = futures[1] as AggregateQuerySnapshot;
+      final totalEarnings = futures[2] as double;
+      final pendingPayments = futures[3] as double;
+
       return {
-        'totalClients': futures[0].count,
-        'activeProjects': futures[1].count,
-        'totalEarnings': futures[2] as double,
-        'pendingPayments': futures[3] as double,
+        'totalClients': clientsCountSnapshot.count,
+        'activeProjects': projectsCountSnapshot.count,
+        'totalEarnings': totalEarnings,
+        'pendingPayments': pendingPayments,
         'overduePayments': overdueSnapshot.count,
       };
     } catch (e) {

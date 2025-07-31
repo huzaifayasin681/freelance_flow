@@ -119,7 +119,6 @@ class NeumorphicCard extends StatelessWidget {
                       : Colors.grey.withOpacity(0.2),
                   offset: const Offset(2, 2),
                   blurRadius: 4,
-                  inset: true,
                 ),
               ]
             : [

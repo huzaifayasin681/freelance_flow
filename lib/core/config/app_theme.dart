@@ -59,7 +59,7 @@ class AppTheme {
       ),
 
       // Card theme with glassmorphism
-      cardTheme: CardTheme(
+      cardTheme: const CardThemeData(
         elevation: 0,
         color: glassColor,
         shape: RoundedRectangleBorder(

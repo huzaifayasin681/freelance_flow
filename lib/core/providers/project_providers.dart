@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../services/firestore_service.dart';
 import '../../shared/models/project_model.dart';
-import '../../shared/models/client_model.dart';
 
 /// Provider for projects stream
 final projectsProvider = StreamProvider<List<ProjectModel>>((ref) {
@@ -59,16 +58,14 @@ class ProjectFormState {
     this.projectName = '',
     this.description = '',
     this.clientId = '',
-    DateTime? startDate,
+    required this.startDate,
     this.deadline,
     this.status = ProjectStatus.active,
     this.budget,
     this.currency = 'USD',
     this.isLoading = false,
     this.errorMessage,
-  }) : startDate = startDate ?? const ProjectFormState._defaultDate();
-
-  const ProjectFormState._defaultDate() : startDate = null;
+  });
 
   ProjectFormState copyWith({
     String? projectName,

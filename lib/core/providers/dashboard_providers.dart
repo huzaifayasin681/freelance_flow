@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freelance_flow/shared/models/payment_model.dart';
 
 import '../services/firestore_service.dart';
 import 'client_providers.dart';

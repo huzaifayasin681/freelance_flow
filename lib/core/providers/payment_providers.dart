@@ -43,7 +43,7 @@ final filteredPaymentsProvider = Provider<List<PaymentModel>>((ref) {
   return payments.where((payment) {
     return (payment.description?.toLowerCase().contains(searchQuery) ?? false) ||
            payment.formattedAmount.toLowerCase().contains(searchQuery) ||
-           payment.invoiceNumber?.toLowerCase().contains(searchQuery) ?? false;
+           (payment.invoiceNumber?.toLowerCase().contains(searchQuery) ?? false);
   }).toList();
 });
 
@@ -69,7 +69,7 @@ class PaymentFormState {
   final bool isLoading;
   final String? errorMessage;
 
-  const PaymentFormState({
+  PaymentFormState({
     this.clientId = '',
     this.projectId = '',
     this.amount = 0.0,
@@ -84,7 +84,7 @@ class PaymentFormState {
     this.reminderDays = 3,
     this.isLoading = false,
     this.errorMessage,
-  }) : dueDate = dueDate ?? DateTime.now().add(const Duration(days: 30));
+  }) : dueDate = dueDate ?? DateTime.now().add(Duration(days: 30));
 
   PaymentFormState copyWith({
     String? clientId,
@@ -132,7 +132,7 @@ class PaymentFormNotifier extends StateNotifier<PaymentFormState> {
       amount: initialPayment?.amount ?? 0.0,
       currency: initialPayment?.currency ?? 'USD',
       description: initialPayment?.description ?? '',
-      dueDate: initialPayment?.dueDate ?? DateTime.now().add(const Duration(days: 30)),
+      dueDate: initialPayment?.dueDate ?? DateTime.now().add(Duration(days: 30)),
       paymentStatus: initialPayment?.paymentStatus ?? PaymentStatus.unpaid,
       paymentMethod: initialPayment?.paymentMethod ?? PaymentMethod.bankTransfer,
       invoiceUrl: initialPayment?.invoiceUrl ?? '',
