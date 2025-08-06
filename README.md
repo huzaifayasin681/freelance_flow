@@ -338,7 +338,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you encounter any issues or have questions:
 
-1. Check the [Issues](https://github.com/yourusername/freelanceflow/issues) page
+1. Check the [Issues](https://github.com/huzaifayasin681/freelanceflow/issues) page
 2. Review the [Setup Guide](scripts/setup_firebase.md)
 3. Create a new issue with:
    - Clear description of the problem
@@ -364,7 +364,7 @@ If you like this project, please consider:
   <p><strong>Made with ❤️ for the freelance community</strong></p>
   <p>
     <a href="#freelanceflow">Back to Top</a> •
-    <a href="https://github.com/yourusername/freelanceflow/issues">Report Bug</a> •
-    <a href="https://github.com/yourusername/freelanceflow/issues">Request Feature</a>
+    <a href="https://github.com/huzaifayasin681/freelanceflow/issues">Report Bug</a> •
+    <a href="https://github.com/huzaifayasin681/freelanceflow/issues">Request Feature</a>
   </p>
 </div>
